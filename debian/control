@@ -35,10 +35,12 @@ Architecture: all
 Depends: nginx-full   (>= ${source:Version}) |
          nginx-light  (>= ${source:Version}) |
          nginx-extras (>= ${source:Version}) |
+         nginx-rtmp   (>= ${source:Version}) |
          nginx-naxsi  (>= ${source:Version}) ,
          nginx-full   (<< ${source:Version}.1~) |
          nginx-light  (<< ${source:Version}.1~) |
          nginx-extras (<< ${source:Version}.1~) |
+         nginx-rtmp   (<< ${source:Version}.1~) |
          nginx-naxsi  (<< ${source:Version}.1~) ,
          ${misc:Depends}
 Description: small, powerful, scalable web/proxy server
@@ -210,6 +212,56 @@ Description: nginx web/proxy server (extended version) - debugging symbols
  and as a proxy to reduce the load on back-end HTTP or mail servers.
  .
  This package provides debugging symbols for nginx-extras, to assist in
+ debugging issues that you may find. It should not be required for normal
+ operation.
+
+Package: nginx-rtmp
+Architecture: any
+Priority: extra
+Depends: nginx-common (= ${source:Version}),
+         ${misc:Depends},
+         ${perl:Depends},
+         ${shlibs:Depends}
+Breaks: nginx (<< 1.4.5-1)
+Provides: httpd, httpd-cgi, nginx
+Conflicts: nginx-full, nginx-light, nginx-naxsi, nginx-extras
+Suggests: nginx-doc (= ${source:Version})
+Description: nginx web/proxy server (RTMP version)
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package provides a version of nginx with the standard modules, plus
+ extra features and modules such as the Perl module, which allows the
+ addition of Perl in configuration files.
+ .
+ STANDARD HTTP MODULES: Core, Access, Auth Basic, Auto Index, Browser,
+ Charset, Empty GIF, FastCGI, Geo, Gzip, Headers, Index, Limit Requests,
+ Limit Zone, Log, Map, Memcached, Proxy, Referer, Rewrite, SCGI,
+ Split Clients, SSI, Upstream, User ID, UWSGI.
+ .
+ OPTIONAL HTTP MODULES: Addition, Auth Request, Debug, Embedded Perl, FLV,
+ GeoIP, Gzip Precompression, Image Filter, IPv6, MP4, Random Index, Real IP,
+ Secure Link, Spdy, SSL, Stub Status, Substitution, WebDAV, XSLT.
+ .
+ MAIL MODULES: Mail Core, IMAP, POP3, SMTP, SSL.
+ .
+ THIRD PARTY MODULES: Auth PAM, Chunkin, DAV Ext, Echo, Embedded Lua,
+ Fancy Index, HttpHeadersMore, HTTP Substitution Filter, http push,
+ Nginx Development Kit, Upload Progress, Upstream Fair Queue, RTMP.
+
+Package: nginx-rtmp-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: nginx-rtmp (= ${binary:Version}), ${misc:Depends}
+Conflicts: nginx-full-dbg, nginx-light-dbg, nginx-naxsi-dbg, nginx-extras-dbg
+Description: nginx web/proxy server (RTMP version) - debugging symbols
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package provides debugging symbols for nginx-rtmp, to assist in
  debugging issues that you may find. It should not be required for normal
  operation.
 

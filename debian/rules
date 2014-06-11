@@ -9,7 +9,7 @@ debian_ldflags:=$(shell dpkg-buildflags --get LDFLAGS)
 DEBIAN_NGINX_PERL_LDFLAGS:= $(debian_ldflags)
 export DEBIAN_NGINX_PERL_LDFLAGS
 
-FLAVOURS := full light extras naxsi
+FLAVOURS := full light extras naxsi rtmp
 
 MODULESDIR = $(CURDIR)/debian/modules
 BASEDIR = $(CURDIR)
@@ -122,6 +122,12 @@ naxsi_configure_flags := \
 			--without-http_scgi_module \
 			--add-module=$(MODULESDIR)/nginx-cache-purge \
 			--add-module=$(MODULESDIR)/nginx-upstream-fair
+
+rtmp_configure_flags := \
+                        $(extras_configure_flags) \
+                       --add-module=$(MODULESDIR)/nginx-rtmp
+
+
 
 %:
 	dh $@ --with systemd
