@@ -1,3 +1,10 @@
+nginx (1.6.1-2.1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * added nginx-rtmp (based on nginx-extras)
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Mon, 15 Sep 2014 12:13:47 +0200
+
 nginx (1.6.1-2) unstable; urgency=medium
 
   [ Christos Trochalakis ]
