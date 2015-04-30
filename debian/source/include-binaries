@@ -1,5 +1,3 @@
-debian/modules/naxsi/contrib/naxsi-ui/bootstrap/img/glyphicons-halflings.png
-debian/modules/naxsi/contrib/naxsi-ui/bootstrap/img/glyphicons-halflings-white.png
 debian/modules/nginx-rtmp/test/www/bg.jpg
 debian/modules/nginx-rtmp/test/www/jwplayer/jwplayer.flash.swf
 debian/modules/nginx-rtmp/test/www/jwplayer_old/player.swf
